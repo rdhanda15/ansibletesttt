@@ -1,2 +1,2 @@
 [data]
-192.168.81.131
+192.168.81.131 ansible_user=dhanda ansible_ssh_private_key_file=~/.ssh/id_rsa

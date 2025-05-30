@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Code') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Run Ansible Playbook') {
+            steps {
+                ansiblePlaybook(
+                    credentialsId: 'ansible-ssh',
+                    inventory: './inventory',
+                    playbook: 'install-ftp.yml'
+                )
+            }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ FTP server installed successfully using Ansible.'
+        }
+        failure {
+            echo '❌ Ansible playbook execution failed.'
+        }
+    }
+}

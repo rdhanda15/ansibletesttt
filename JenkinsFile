@@ -13,7 +13,7 @@ pipeline {
                 ansiblePlaybook(
                     credentialsId: 'ansible-ssh',
                     inventory: './inventory',
-                    playbook: 'install-ftp.yml'
+                    playbook: 'playbook.yml'
                 )
             }
         }

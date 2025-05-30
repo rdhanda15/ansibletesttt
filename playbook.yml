@@ -1,0 +1,15 @@
+- name: Install FTP Server (vsftpd)
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Install vsftpd package
+      package:
+        name: vsftpd
+        state: present
+
+    - name: Enable and start vsftpd service
+      service:
+        name: vsftpd
+        state: started
+        enabled: yes
